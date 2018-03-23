@@ -1,24 +1,21 @@
-<div class="container m-2">
+<div class="container w-100 mt-2 mb-2">
   <!-- Navigation Bar -->
   {% include "itemdetail/navigation.html"  %}
-<!-- Product detail -->
-  <div class="container p-4 bg-white">
-  <div class="row">
-    <!-- Product Image -->
-    <div class="col m-4">
+  <!-- Product detail -->
+  <div class="container w-100 g-white border border-danger rounded">
+    <div class="row">
+      <!-- Product Image -->
+      <div class="col mt-2 mb-2">
       {% include "itemdetail/carousel.html" %}
-    </div>
-    <!-- Product Info -->
-    {% include "itemdetail/productinfo.html" %}
-    <!-- Story -->
+      <!-- Story -->
       {% include "itemdetail/story.html" %}
-    <div class="m-5">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control text-white bg-dark font-weight-bold rounded p-5" placeholder="Comment . . ." aria-label="Comment" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary rounded font-weight-bold text-danger m-3" type="button">Post</button>
-        </div>
-      </div>
+    </div>
+      <!-- Product Info -->
+      {% include "itemdetail/productinfo.html" %}
+      <!-- Comment -->
+      {% include "itemdetail/comment.html" %}
+
+
     </div>
   </div>
 </div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    {% include "meta-data.html"  %}
+    <title>Welcome to MFS</title>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.12&appId=179249009383609&autoLogAppEvents=1';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
+      {% include "homepage/navi-signin.html" %}
+
+    {% for item in all_items %}
+      <p><i><b>{{ loop.index }}</b></i></p>
+      {% for img in item.image %}
+        <img src= "static/media/{{img}}" alt="" style="width:300px;">
+      {% endfor %}
+
+      {% include "homepage/popup-item.html"  %}
+
+      <span>Price : {{item.price}}</span>
+      <span>VNĐ</span>
+    {% endfor %}
+<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+    </body>
+</html>
