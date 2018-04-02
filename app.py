@@ -3,12 +3,12 @@ from models.service import Item, Category, User
 import mlab
 import os
 from werkzeug.utils import secure_filename
-from flask_disqus import Disqus
+# from flask_disqus import Disqus
 
 mlab.connect()
 
 app = Flask(__name__)
-disq = Disqus(app)
+# disq = Disqus(app)
 
 app.config['SECRET_KEY'] = "Memoryforsales123"
 
