@@ -5,12 +5,15 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
     {% include "meta-data.html"  %}
+    <link rel="stylesheet" href="../static/style.css">
+
     <title>Welcome to MFS</title>
     <link rel="icon" type="image/png" href="https://cdn0.iconfinder.com/data/icons/social-icons-rounded/110/Heart-Bubble-512.png">
   </head>
   <body>
-
+    <p>{{message}}</p>
     {% include "homepage/navi-signin.html" %}
 
     <div class="card-columns m-4">
@@ -21,13 +24,13 @@
         <div class="card-body">
           <div class="col-12 col-md-8 text-danger font-weight-bold"> {{ item.title }} </div>
           <div class="col-6 col-md-4 text-secondary font-weight-bold">
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target=".bd-example-modal-lg">
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#{{item.id}}">
               detail
             </button>
           </div>
         </div>
 
-          {% include "homepage/popup-item.html"  %}
+          {% include "homepage/popup-item.html" %}
         </div>
       {% endfor %}
     </div>

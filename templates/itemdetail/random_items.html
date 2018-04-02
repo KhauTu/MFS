@@ -1,30 +1,14 @@
+{% for random in all_items %}
+
+{% if random.id != item.id %}
+{%if loop.index < 6 %}
 <div class="media m-3">
-  <img class="mr-3" src="http://via.placeholder.com/75x75" alt="Generic placeholder image">
+  <img class="mr-3" src="../static/media/{{random.image[0]}}" alt="Generic placeholder image" width="75px">
   <div class="media-body">
-    <h5 class="mt-0">Media heading</h5>
+    <a href="" data-toggle="modal" data-target="#{{random.id}}" data-dismiss="modal"><h6 class="mt-0">{{random.title}}</h6></a>
+
   </div>
 </div>
-<div class="media m-3">
-  <img class="mr-3" src="http://via.placeholder.com/75x75" alt="Generic placeholder image">
-  <div class="media-body">
-    <h5 class="mt-0">Media heading</h5>
-  </div>
-</div>
-<div class="media m-3">
-  <img class="mr-3" src="http://via.placeholder.com/75x75" alt="Generic placeholder image">
-  <div class="media-body">
-    <h5 class="mt-0">Media heading</h5>
-  </div>
-</div>
-<div class="media m-3">
-  <img class="mr-3" src="http://via.placeholder.com/75x75" alt="Generic placeholder image">
-  <div class="media-body">
-    <h5 class="mt-0">Media heading</h5>
-  </div>
-</div>
-<div class="media m-3">
-  <img class="mr-3" src="http://via.placeholder.com/75x75" alt="Generic placeholder image">
-  <div class="media-body">
-    <h5 class="mt-0">Media heading</h5>
-  </div>
-</div>
+{%endif%}
+{%endif%}
+{%endfor%}

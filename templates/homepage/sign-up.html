@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    {% include "meta-data.html"  %}
-    <title>Welcome to MFS</title>
-  </head>
-  <body>
-
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-danger font-weight-bold" data-toggle="modal" data-target="#exampleModal">
     Sign up
@@ -32,7 +20,7 @@
           <form class="px-4 py-3" method="POST">
             <div class="form-group">
               <label>Username</label>
-              <input name="user_name" type="text" class="form-control" placeholder="Khau Tu" required>
+              <input name="user_name" type="text" class="form-control" placeholder="Khau Tu" required maxlength="8">
             </div>
             <div class="form-group">
               <label>Password</label>
@@ -58,7 +46,3 @@
     </div>
 
     </form>
-
-
-  </body>
-</html>

@@ -1,65 +1,48 @@
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    {% include "meta-data.html"  %}
-    <title>Welcome to MFS</title>
-  </head>
-  <body>
-
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-danger font-weight-bold" data-toggle="modal" data-target="#exampleModalsignin">
     Sign in
     </button>
 
-
     <div class="modal fade" id="exampleModalsignin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
 
-        <div class="modal-header text-primary font-weight-bold">
-          <h5 class="modal-title" id="exampleModalLabel">Welcome to Memories for Sale </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+          <div class="modal-header text-primary font-weight-bold">
+            <h5 class="modal-title" id="exampleModalLabel">Welcome to Memories for Sale </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
 
-    <form method="POST">
+      <form method="POST">
 
-        <div class="modal-body">
-          <form class="px-4 py-3">
-            <div class="form-group">
-              <label>Username</label>
-              <input type="text" class="form-control" name='user_name' placeholder="Khau Tu" required>
-            </div>
-            <div class="form-group">
-              <label>Password</label>
-              <input type="password" class="form-control" name="password" placeholder="Password" required>
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="dropdownCheck">
-              <label class="form-check-label" for="dropdownCheck">
-                Remember me
-              </label>
-            </div>
-            <button type="submit" class="btn btn-primary"></a>Sign in</button>
+          <div class="modal-body">
+            <form class="px-4 py-3" method='POST'>
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" name='user' placeholder="Khau Tu" required>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="pass" placeholder="Password" required>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                <label class="form-check-label" for="dropdownCheck">
+                  Remember me
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary"></a>Sign in</button>
+              
+            </form>
+          </div>
 
-          </form>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
-    </div>
-    </div>
+
 
     </form>
-
-
-  </body>
-</html>
+</div>

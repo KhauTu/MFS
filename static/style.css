@@ -18,6 +18,16 @@
   column-count: 5;
 }
 
+@media (min-width: 576px)
+.card-columns {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 5;
+    -webkit-column-gap: 1.25rem;
+    -moz-column-gap: 1.25rem;
+    column-gap: 1.25rem;
+}
+
 button :hover {
   background-color: blue;
 }
