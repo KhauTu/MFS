@@ -3,12 +3,12 @@ from models.service import Item, Category, User
 import mlab
 import os
 from werkzeug.utils import secure_filename
-# from flask_disqus import Disqus
+from flask_disqus import Disqus
 
 mlab.connect()
 
 app = Flask(__name__)
-# disq = Disqus(app)
+disq = Disqus(app)
 
 app.config['SECRET_KEY'] = "Memoryforsales123"
 
@@ -40,7 +40,9 @@ def homepage():
         user_name = session.get('user_name', None)
         if user_name != None:
             user = User.objects(user_name = user_name)[0]
-        return render_template('homepage.html', all_items = all_items, message = '', user_name = user_name, user = user)
+            return render_template('homepage.html', all_items = all_items, message = '', user_name = user_name, user = user)
+        else:
+            return render_template('homepage.html', all_items = all_items, message = '', user_name = user_name)
     elif request.method == "POST":
         form = request.form
 
