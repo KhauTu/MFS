@@ -7,22 +7,21 @@
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     {% include "meta-data.html"  %}
     <title>Welcome to MFS</title>
-    <link rel="icon" type="image/png" href="https://cdn0.iconfinder.com/data/icons/social-icons-rounded/110/Heart-Bubble-512.png">
   </head>
   <body>
+    
+    {% include "homepage/navi-user.html" %}
 
-    {% include "homepage/navi-signin.html" %}
-
-    <div class="card-columns m-4">
+    <div class="card-columns m-3">
       {% for item in all_items %}
 
-      <div class="card bg-light border border-light rounded">
-        <img class="rounded border border-light p-2 rounded" src= "static/media/{{item.image[0]}}" alt="" style="width: 100%;">
-        <div class="card-body">
+      <div class="card bg-white border border-white">
+        <img class="rounded border border-secondary" src= "static/media/{{item.image[0]}}" alt="" style="width: 100%;">
+        <div class="row">
           <div class="col-12 col-md-8 text-danger font-weight-bold"> {{ item.title }} </div>
           <div class="col-6 col-md-4 text-secondary font-weight-bold">
             <button type="button" class="btn btn-link" data-toggle="modal" data-target=".bd-example-modal-lg">
-              detail
+              ...
             </button>
           </div>
         </div>
@@ -31,9 +30,5 @@
         </div>
       {% endfor %}
     </div>
-
-
-
-
     </body>
 </html>

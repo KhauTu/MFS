@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    {% include "meta-data.html"  %}
+    <title>Welcome to MFS</title>
+  </head>
+  <body>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger font-weight-bold" data-toggle="modal" data-target="#exampleModal">
+    Sign up
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header text-primary font-weight-bold">
+          <h5 class="modal-title" id="exampleModalLabel">Welcome to Memories for Sale </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+      <form method="POST">
+        <div class="modal-body">
+          <form class="px-4 py-3" method="POST">
+            <div class="form-group">
+              <label>Username</label>
+              <input name="user_name" type="text" class="form-control" placeholder="Khau Tu" required>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input name="password" type="password" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+              <label>Email address</label>
+              <input name="email" type="email" class="form-control" placeholder="email@example.com" required>
+            </div>
+            <div class="form-group">
+              <label>Phone number</label>
+              <input name="phone" type="number" class="form-control" id="exampleDropdownFormPassword1" placeholder="0123456789" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign up</button>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    </form>
+
+
+  </body>
+</html>
