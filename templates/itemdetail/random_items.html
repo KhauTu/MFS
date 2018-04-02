@@ -3,10 +3,10 @@
 {% if random.id != item.id %}
 {%if loop.index < 6 %}
 <div class="media m-3">
-  <img class="mr-3" src="../static/media/{{random.image[0]}}" alt="Generic placeholder image" width="75px">
-  <div class="media-body">
-    <a href="" data-toggle="modal" data-target="#{{random.id}}" data-dismiss="modal"><h6 class="mt-0">{{random.title}}</h6></a>
 
+  <div class="media-body">
+    <img class="mr-3" src="../static/media/{{random.image[0]}}" alt="Generic placeholder image" width="75px">
+    <a href="" data-toggle="modal" data-target="#{{random.id}}" data-dismiss="modal"><span class="mt-0">{{random.title}}</span></a>
   </div>
 </div>
 {%endif%}

@@ -3,10 +3,13 @@ from models.service import Item, Category, User
 import mlab
 import os
 from werkzeug.utils import secure_filename
+from flask_disqus import Disqus
 
 mlab.connect()
 
 app = Flask(__name__)
+disq = Disqus(app)
+
 app.config['SECRET_KEY'] = "Memoryforsales123"
 
 UPLOAD_FOLDER = "static/media/"
@@ -34,7 +37,10 @@ def homepage():
 # def sign_up():
     if request.method == "GET":
         # return render_template('homepage/sign-up.html')
-        return render_template('homepage.html', all_items = all_items, message = '')
+        user_name = session.get('user_name', None)
+        if user_name != None:
+            user = User.objects(user_name = user_name)[0]
+        return render_template('homepage.html', all_items = all_items, message = '', user_name = user_name, user = user)
     elif request.method == "POST":
         form = request.form
 
@@ -55,6 +61,7 @@ def homepage():
                 return render_template('homepage.html', all_items = all_items, message = message)
             else:
                 session['logged_in'] = True
+                session['user_name'] = user[0].user_name
                 print("successfully signed in")
                 return redirect(url_for("user", user_name = user[0].user_name))
         else:
@@ -78,6 +85,10 @@ def form(user_name):
     elif request.method == "POST":
 
         form = request.form
+        name = form['name']
+        print(name)
+        phone = form['phone']
+        address = form['address']
         story = form['story']
         price = form['price']
         title = form['title']
@@ -119,7 +130,10 @@ def form(user_name):
         file_name2= savefile(file2, file_name2)
         file_name3= savefile(file3, file_name3)
 
-        new_item = Item(story=story,
+        new_item = Item(name = name,
+                        phone = phone,
+                        address = address,
+                        story=story,
                         price=price,
                         title=title,
                         image=[file_name1,
@@ -132,8 +146,11 @@ def form(user_name):
 
 @app.route('/user/<user_name>')
 def user(user_name):
+    user = User.objects(user_name = user_name)
+    products = Item.objects(name = user_name)
+    print(products)
     if "logged_in" in session and session["logged_in"] == True:
-        return render_template('user/user.html', user_name = user_name)
+        return render_template('user/user.html', user = user[0], products = products)
     else:
         return redirect(url_for("homepage"))
 

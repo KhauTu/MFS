@@ -21,6 +21,31 @@
     </ul>
     </div>
     <div class="nav-item d-flex flex-row-reverse">
-      <a class="nav-link font-weight-bold bg-danger text-white rounded" href="#"><i class="fab fa-opencart"></i> Get it</a>
+      <a class="nav-link font-weight-bold bg-danger text-white rounded" href="#" data-toggle="modal" data-target="#{{item.id}}-get">
+
+        <!-- Small modal -->
+ <i class="fab fa-opencart"></i> Get it
+
+        </a>
+    </div>
+    <div id='{{item.id}}-get' class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role='document'>
+        <div class="modal-content">
+          <div class="bg-light modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Contact Now!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <p>To become new owner of this super cute item, please contact via:</p>
+          <p>Name: {{item.phone}}</p>
+          <p>Phone: {{item.phone}}</p>
+          <p>Address: {{item.address}}</p>
+          <div class="bg-light modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+          </div>
+
+      </div>
     </div>
 </nav>
