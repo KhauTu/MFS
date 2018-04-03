@@ -28,6 +28,10 @@
     column-gap: 1.25rem;
 }
 
+.modal-backdrop {
+  z-index: unset !important;
+}
+
 button :hover {
   background-color: blue;
 }

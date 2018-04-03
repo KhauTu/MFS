@@ -1,5 +1,5 @@
 from flask import *
-from models.service import Item, Category, User
+from models.service import Item, Category, User, Comment
 import mlab
 import os
 from werkzeug.utils import secure_filename
@@ -52,19 +52,24 @@ def homepage():
 
         out = form.get('out', None)
 
-        if email == None and out == None:
+        # Comment
+        id_item_comment = form.get('button', None)
+        author_comment = form.get('author-{0}'.format(id_item_comment), None)
+        content_comment = form.get('content-{0}'.format(id_item_comment), None)
+
+        if user != None:
 
             user = User.objects(user_name=user, password=pas)
             if len(user) == 0:
                 message = "NOT found user name or invalid password!"
                 user_name = None
-                return render_template('homepage.html', all_items = all_items, message = message, user_name = user_name)
+                return render_template('homepage.html', all_items = all_items, message = message, user_name = user_name, id_click = '')
             else:
                 session['logged_in'] = True
                 session['user_name'] = user[0].user_name
                 print("successfully signed in")
                 return redirect(url_for("user", user_name = user[0].user_name))
-        elif email != None and out == None:
+        if email != None:
 
             new_user = User(user_name=user_name,
                             password=password,
@@ -72,17 +77,35 @@ def homepage():
                             phone=phone)
             new_user.save()
             return redirect(url_for('homepage'))
-        else:
+        if out != None:
             session['logged_in'] = False
             session['user_name'] = None
             user_name = session['user_name']
             message = ''
-            return render_template('homepage.html', all_items = all_items, message = message, user_name = user_name)
+            return render_template('homepage.html', all_items = all_items, message = message, user_name = user_name, id_click = '')
+        if id_item_comment != None:
+            new_comment = Comment(author = author_comment, content = content_comment)
+            new_comment.save()
+            item = Item.objects(id = id_item_comment)[0]
+            list_comment = item.comments
+            list_comment.append(new_comment)
+            print(list_comment)
+            item.update( set__comments = list_comment)
+            item.reload()
+            user_name = session['user_name']
 
-# @app.route('/sign-in', methods = ['GET', 'POST'])
-# def sign_in():
-    # if request.method == "GET":
-    #     return render_template('homepage/sign-in.html')
+            return render_template('homepage.html', all_items = all_items, message = '', user_name = user_name, id_click = id_item_comment)
+
+
+@app.route('/category/<cate_name>', methods = ['GET', 'POST'])
+def cate(cate_name):
+    cate_id = Category.objects(name = cate_name)[0].id
+    all_items = Item.objects.filter(category__contains = cate_id)
+    print(all_items)
+    user_name = session.get('user_name', None)
+
+    return render_template('homepage.html', all_items = all_items, message = '', user_name = user_name, id_click = '')
+    # return render_template('homepage.html')
 
 @app.route('/user/<user_name>/set-it-free', methods = ['GET', 'POST'])
 def form(user_name):

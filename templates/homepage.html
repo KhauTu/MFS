@@ -11,6 +11,13 @@
 
     <title>Welcome to MFS</title>
     <link rel="icon" type="image/png" href="https://cdn0.iconfinder.com/data/icons/social-icons-rounded/110/Heart-Bubble-512.png">
+    <script>
+    $(document).ready(function(){
+      var id_click = '{{id_click}}';
+      var detail = $(`#id-{{id_click}}`);
+     detail.click();
+    });
+    </script>
   </head>
   <body>
     {% if message != '' %}
@@ -21,7 +28,9 @@
       </button>
     </div>
     {% endif %}
-    {% include "homepage/navi-signin.html" %}
+
+    <p>{% include "homepage/navi-signin.html" %}</p>
+
 
     <div class="card-columns m-4">
       {% for item in all_items %}
@@ -31,7 +40,7 @@
         <div class="card-body">
           <span class="col-12 col-md-8 text-danger font-weight-bold"> {{ item.title }} </span>
           <span class="col-6 col-md-4 text-secondary font-weight-bold">
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#{{item.id}}">
+            <button id="id-{{item.id}}" type="button" class="btn btn-link" data-toggle="modal" data-target="#{{item.id}}">
               Detail
             </button>
           </span>

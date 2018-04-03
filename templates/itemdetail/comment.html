@@ -12,7 +12,20 @@
 
       <div class="input-group">
 
-  
+          <form class="" method="POST">
+            <label> Name </label>
+            <input type="text" name="author-{{item.id}}" value="">
+            <br>
+            <label>Comment</label>
+            <input type="text" name="content-{{item.id}}" value="">
+
+            <!-- <textarea name="content" rows="4" cols="80"></textarea> -->
+            <button type="submit" name="button" data-target='#{{item.id}}' value="{{item.id}}">Post comment</button>
+          </form>
+          {% for comment in item.comments %}
+            Author: {{ comment.author }}
+            Comment: {{ comment.content }}
+          {% endfor %}
       </div>
 
     </div>
