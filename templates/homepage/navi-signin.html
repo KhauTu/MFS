@@ -30,13 +30,15 @@
 
         </li>
         {% else %}
-        <li class="nav-item border border-danger rounded bg-danger mr-2">
-          <a class="btn btn-danger font-pacifico" href="/user/{{user_name}}">{{ user_name }}</a>
-        </li>
+          <li class="nav-item border border-danger rounded bg-danger mr-2">
+            <a class="btn btn-danger font-pacifico" href="/user/{{user_name}}">{{ user_name }}</a>
+          </li>
 
-        <li class="nav-item border border-danger rounded bg-danger">
-          <a class="btn btn-danger font-pacifico" href="/user/{{user_name}}/set-it-free">Let it be</a>
-        </li>
+          <li class="nav-item border border-danger rounded bg-danger">
+            <a class="btn btn-danger font-pacifico" href="/user/{{user_name}}/set-it-free">Let it be</a>
+          </li>
+
+
         {%endif%}
 
         <li class="nav-item dropdown">
@@ -51,6 +53,15 @@
             <a class="dropdown-item text-danger" href="#"> Something Else </a>
           </div>
         </li>
+        {% if user_name != None %}
+        <form class="" method="POST">
+          <li class="nav-item border border-danger rounded bg-danger">
+            <input type="text" name="out" value="logout" style="display: none;">
+            <button type='submit' class="btn btn-danger font-pacifico" >Log out</button>
+          </li>
+        </form>
+
+        {% endif %}
       </ul>
     </div>
 </nav>

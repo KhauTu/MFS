@@ -3,12 +3,10 @@ from models.service import Item, Category, User
 import mlab
 import os
 from werkzeug.utils import secure_filename
-from flask_disqus import Disqus
 
 mlab.connect()
 
 app = Flask(__name__)
-disq = Disqus(app)
 
 app.config['SECRET_KEY'] = "Memoryforsales123"
 
@@ -38,11 +36,9 @@ def homepage():
     if request.method == "GET":
         # return render_template('homepage/sign-up.html')
         user_name = session.get('user_name', None)
-        if user_name != None:
-            user = User.objects(user_name = user_name)[0]
-            return render_template('homepage.html', all_items = all_items, message = '', user_name = user_name, user = user)
-        else:
-            return render_template('homepage.html', all_items = all_items, message = '', user_name = user_name)
+
+        return render_template('homepage.html', all_items = all_items, message = '', user_name = user_name)
+
     elif request.method == "POST":
         form = request.form
 
@@ -54,19 +50,21 @@ def homepage():
         user = form.get('user', None)
         pas = form.get('pass', None)
 
-        if email == None:
+        out = form.get('out', None)
+
+        if email == None and out == None:
 
             user = User.objects(user_name=user, password=pas)
             if len(user) == 0:
-                message = "not found user name or invalid password"
-                show_example_modal=True
-                return render_template('homepage.html', all_items = all_items, message = message)
+                message = "NOT found user name or invalid password!"
+                user_name = None
+                return render_template('homepage.html', all_items = all_items, message = message, user_name = user_name)
             else:
                 session['logged_in'] = True
                 session['user_name'] = user[0].user_name
                 print("successfully signed in")
                 return redirect(url_for("user", user_name = user[0].user_name))
-        else:
+        elif email != None and out == None:
 
             new_user = User(user_name=user_name,
                             password=password,
@@ -74,6 +72,12 @@ def homepage():
                             phone=phone)
             new_user.save()
             return redirect(url_for('homepage'))
+        else:
+            session['logged_in'] = False
+            session['user_name'] = None
+            user_name = session['user_name']
+            message = ''
+            return render_template('homepage.html', all_items = all_items, message = message, user_name = user_name)
 
 # @app.route('/sign-in', methods = ['GET', 'POST'])
 # def sign_in():
