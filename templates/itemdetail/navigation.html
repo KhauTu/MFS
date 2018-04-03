@@ -1,4 +1,4 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light rounded">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light rounded" style="width: 100%">
   <a class="navbar-brand text-danger font-lobster" href="/"> Memories for Sale</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -30,17 +30,17 @@
     </div>
     <div id='{{item.id}}-get' class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role='document'>
-        <div class="modal-content">
+        <div class="modal-content border border-danger rounded">
           <div class="bg-light modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Contact Now!</h5>
+            <h5 class="modal-title text-danger font-weight-bold" id="exampleModalLongTitle">Contact Now!</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <p>To become new owner of this super cute item, please contact via:</p>
-          <p>Name: {{item.phone}}</p>
-          <p>Phone: {{item.phone}}</p>
-          <p>Address: {{item.address}}</p>
+          <p class="font-pacifico">To become new owner of this super cute item, please contact via:</p>
+          <p> Name: <span class="text-danger font-weight-bold">{{item.phone}}</span></p>
+          <p> Phone: <span class="text-danger font-weight-bold">{{item.phone}}</span></p>
+          <p> Address: <span class="text-danger font-weight-bold">{{item.address}}</span></p>
           <div class="bg-light modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>

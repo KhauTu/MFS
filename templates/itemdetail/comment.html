@@ -13,21 +13,27 @@
       <div class="input-group">
 
           <form class="" method="POST">
-            <label> Name </label>
-            <input type="text" name="author-{{item.id}}" value="">
+            <label class="font-pacifico">Comment</label>
+            <input class="border border-danger rounded" type="text" name="content-{{item.id}}" value="" placeholder="Say smth cool!"> 
             <br>
-            <label>Comment</label>
-            <input type="text" name="content-{{item.id}}" value="">
+            <label class="font-pacifico"> Name </label>
+            <input class="border border-danger rounded" type="text" name="author-{{item.id}}" value="" placeholder="Nickname">
+
+
 
             <!-- <textarea name="content" rows="4" cols="80"></textarea> -->
-            <button type="submit" name="button" data-target='#{{item.id}}' value="{{item.id}}">Post comment</button>
+            <button class="bg-danger text-white border border-danger rounded" type="submit" name="button" data-target='#{{item.id}}' value="{{item.id}}">Post</button>
           </form>
-          {% for comment in item.comments %}
-            Author: {{ comment.author }}
-            Comment: {{ comment.content }}
-          {% endfor %}
+
+      </div>
+      {% for comment in item.comments %}
+      <div>
+        <span class="text-danger">"{{ comment.content }}"</span>
+        <span class="font-pacifico">{{ comment.author }}</span> said
+
       </div>
 
+      {% endfor %}
     </div>
   </div>
   <div class="tab-pane fade" id="{{item.id}}_more" role="tabpanel" aria-labelledby="{{item.id}}_more-tab">

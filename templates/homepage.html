@@ -37,11 +37,11 @@
 
       <div class="card bg-light border border-light rounded">
         <img class="rounded border border-light p-2 rounded" src= "static/media/{{item.image[0]}}" alt="" style="width: 100%;">
-        <div class="card-body">
-          <span class="col-12 col-md-8 text-danger font-weight-bold"> {{ item.title }} </span>
-          <span class="col-6 col-md-4 text-secondary font-weight-bold">
-            <button id="id-{{item.id}}" type="button" class="btn btn-link" data-toggle="modal" data-target="#{{item.id}}">
-              Detail
+        <div class="card-body d-inline-block" style:"height: 20px">
+          <span class="col-12 col-md-8 w-100 text-danger font-weight-bold"> {{ item.title }} </span>
+          <span class="col-6 col-md-4 text-secondary">
+            <button id="id-{{item.id}}" type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#{{item.id}}">
+              <i class="fas fa-location-arrow text-danger"></i>
             </button>
           </span>
         </div>
